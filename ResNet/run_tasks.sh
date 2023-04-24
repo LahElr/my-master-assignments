@@ -1,0 +1,8 @@
+# python main.py --config "./tasks/tune_lr_1e-1.json"
+# python main.py --config "./tasks/tune_lr_1e-2.json"
+# python main.py --config "./tasks/tune_lr_1e-3.json"
+# python main.py --config "./tasks/tune_lr_schedule_false.json"
+# python main.py --config "./tasks/tune_lr_schedule_true.json"
+# python main.py --config "./tasks/tune_weight_decay_1e-2.json"
+# python main.py --config "./tasks/tune_weight_decay_5e-4.json"
+python main.py --config "./tasks/data_augment.json"

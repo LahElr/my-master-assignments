@@ -1,0 +1,59 @@
+{
+    "expriment_name": "data_augment",
+    "seed": 0,
+    "save_config": true,
+    "save_path": "./save",
+    "device": "cuda:0",
+    "data": {
+        "path": "./data",
+        "num_workers": 4,
+        "train_val_ratio": 0.8,
+        "augment": {
+            "use_erasing": true,
+            "erasing": {
+                "value": [
+                    0.49019607901573181152,
+                    0.47843137383460998535,
+                    0.44313725829124450684
+                ],
+                "p": 0.5,
+                "scale": [
+                    0.02,
+                    0.33
+                ],
+                "ratio": [
+                    0.3,
+                    3.3
+                ]
+            }
+        }
+    },
+    "train": {
+        "epoch": 300,
+        "per_statistic_epoch": 1,
+        "per_save_epoch": 100,
+        "batch_size": 128,
+        "optimizer": {
+            "lr": 0.01,
+            "use_weight_decay": true,
+            "weight_decay": 1e-2,
+            "momentum": 0.9
+        },
+        "scheduler": {
+            "use_scheduler": true
+        }
+    },
+    "model": {
+        "name": "ResNet18"
+    },
+    "statistics": {
+        "x":[],
+        "train_loss": [],
+        "train_acc": [],
+        "val_loss": [],
+        "val_acc": [],
+        "lr": [],
+        "best_train_acc": [[0,0.0]],
+        "best_val_acc": [[0,0.0]]
+    }
+}

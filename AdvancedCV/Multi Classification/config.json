@@ -1,0 +1,93 @@
+{
+    "did_what": "try",
+    "exp_name": "test",
+    "seed": 24601,
+    "mode": "test",
+    "checkpoint": "model.ckpt",
+    "save_config": true,
+    "save_path": "./save",
+    "device": "cuda:0",
+    "data": {
+        "path": "../../FashionDataset",
+        "image_process": {
+            "do_resize": true,
+            "size": {
+                "shortest_edge": 224
+            },
+            "crop_pct": 0.875,
+            "resample": 3,
+            "do_rescale": true,
+            "rescale_factor": 0.0039,
+            "do_normalize": true,
+            "image_mean": [
+                0.485,
+                0.456,
+                0.406
+            ],
+            "image_std": [
+                0.229,
+                0.224,
+                0.225
+            ]
+        },
+        "augment": {
+            "use_random_crop": false,
+            "random_crop_args": {
+                "size": 180,
+                "padding": 44,
+                "pad_if_needed": true,
+                "padding_mode": "constant",
+                "fill": 255
+            },
+            "random_horizontal_flip": 0.5,
+            "use_erasing": true,
+            "erasing": {
+                "p": 0.5,
+                "scale": [
+                    0.05,
+                    0.3
+                ],
+                "ratio": [
+                    0.2,
+                    5.0
+                ]
+            }
+        }
+    },
+    "model": {
+        "scale": "base",
+        "unfreeze_re": "(van\\.encoder\\.stages\\.3.*)|(van\\.layernorm.*)",
+        "group_dim": [
+            7,
+            3,
+            3,
+            4,
+            6,
+            3
+        ],
+        "group_weights": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ],
+        "dropout": 0.5
+    },
+    "train": {
+        "batch_size": 64,
+        "num_workers": 0,
+        "epoch": 10,
+        "per_statistic_epoch": 1,
+        "per_save_epoch": 25,
+        "label_smoothing": 0.2,
+        "optim": {
+            "type": "adamw",
+            "args": {
+                "lr": 0.0001,
+                "weight_decay": 0.01
+            }
+        }
+    }
+}
